@@ -24,7 +24,7 @@ export function MovieProvider({ children }) {
     const data = await fetch(query, options);
     const searchmovies = await data.json();
     console.log(searchmovies);
-    setAdvanceMovies((prev) => (prev = { ...prev, searchmovies }));
+    setAdvanceMovies(searchmovies);
     hanldeMovieState(searchmovies);
   };
 

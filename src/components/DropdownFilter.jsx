@@ -43,6 +43,7 @@ const DropdownFilter = ({ Genres, Countries, handleAvanceSearch }) => {
     }
     return years;
   };
+
   return (
     <div style={{ marginTop: '4rem', marginLeft: '10rem' }}>
       <div className="flex-row-container-filter">
@@ -83,7 +84,7 @@ const DropdownFilter = ({ Genres, Countries, handleAvanceSearch }) => {
             style={{
               backgroundColor: 'teal',
               marginTop: '2rem',
-              marginLeft: '-17rem',
+              marginLeft: '-13rem',
             }}
             onClick={handleSearch}
           >

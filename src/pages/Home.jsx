@@ -49,22 +49,23 @@ const Home = () => {
   useEffect(() => {
     fetchCountries();
   }, []);
-  const setCPage = (pagenum) => {
-    console.log(pagenum);
-    setCurrentPage((prevnum) => prevnum + pagenum);
-
+  const setCPage = () => {
     if (filtermode === false) {
       const topRatedUrl = `${moviesURL}language=en-US&page=${currentpage}`;
       getTopRatedMovies(topRatedUrl);
     } else {
-      fetchAdvannceSearch(query, handleFIlteredMovies);
+      let baseQuery = query;
+      baseQuery += `&page=${currentpage}`;
+      fetchAdvannceSearch(baseQuery, handleFIlteredMovies);
     }
   };
-  const setPrevPage = () => {
-    setCurrentPage(page - 1);
+  const setPrevPage = (pagenum) => {
+    setCurrentPage((prev) => prevNum - 1);
+    setCPage();
   };
-  const setNextPage = () => {
-    setCurrentPage(page + 1);
+  const setNextPage = (pagenum) => {
+    setCurrentPage(pagenum);
+    setCPage();
   };
   const fetchFilteredMovies = (country, genre, year) => {
     let advQuery = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false`;
@@ -73,13 +74,14 @@ const Home = () => {
     if (genre) advQuery += `&with_genres=${genre.value}`;
     if (country) advQuery += `&with_origin_country=${country.value}`;
     if (country) advQuery += `&language=${country.value}`;
-    advQuery += `&page=${currentpage}`;
+
     setQuery(advQuery);
+
     setFilterMode(true);
+    advQuery += `&page=${currentpage}`;
     fetchAdvannceSearch(advQuery, handleFIlteredMovies);
   };
   const handleFIlteredMovies = (moviesData) => {
-    setCurrentPage((prev) => 1);
     setFilterMode(true);
     setFullData(moviesData);
   };
@@ -110,18 +112,16 @@ const Home = () => {
             <MovieCard key={movie.id} movie={movie} />
           ))}
       </div>
-      <nav>
-        {fulldata && (
-          <PaginationFooter
-            itemsPerPage={fulldata.results.length}
-            total_pages={fulldata.total_pages}
-            current_page={currentpage}
-            nextpage={setNextPage}
-            previouspage={setPrevPage}
-            cpage={setCPage}
-          />
-        )}
-      </nav>
+      {fulldata && (
+        <PaginationFooter
+          itemsPerPage={fulldata.results.length}
+          total_pages={fulldata.total_pages}
+          current_page={currentpage}
+          nextpage={setNextPage}
+          previouspage={setPrevPage}
+          cpage={setCPage}
+        />
+      )}
     </div>
   );
 };
