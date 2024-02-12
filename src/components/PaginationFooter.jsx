@@ -1,44 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactPaginate from 'react-paginate';
 import './PaginationFooter.css';
 
 function PaginationFooter({
+  itemsPerPage,
   total_pages,
   current_page,
   nextpage,
   previouspage,
   cpage,
 }) {
-  const recordPerPage = 20;
-  const lastIndex = current_page * recordPerPage;
-  //const [numbers, setNumbers] = useState(0);
-  let numbers = 0;
-  const firstIndex = lastIndex - recordPerPage;
-  let totalpages = total_pages;
-
-  const getPagination = () => {
-    let pageItems = [];
-    for (let i = 1; i <= total_pages; i++) {
-      let activeClass = '';
-      if (current_page === i) {
-        activeClass = 'active';
-      }
-      pageItems.push(
-        <button
-          onClick={handleCurrentPage}
-          value={i}
-          className={i === current_page ? 'active' : ''}
-        >
-          {i}
-        </button>
-      );
-    }
-    return pageItems;
-  };
   const handleCurrentPage = (evt) => {
-    console.log(evt);
-    cpage(evt.selected);
+    const newOffset = current_page + 1;
+    cpage(newOffset);
   };
+
   const setPreviousPage = () => {
     if (current_page !== firstIndex) {
       previouspage();
@@ -54,7 +30,7 @@ function PaginationFooter({
       previousLabel={'Previous'}
       nextLabel={'Next'}
       pageCount={total_pages}
-      onPageChange={handleCurrentPage}
+      onClick={handleCurrentPage}
       containerClassName={'paginationBttns'}
       previousLinkClassName={'previousBttn'}
       nextLinkClassName={'nextBttn'}

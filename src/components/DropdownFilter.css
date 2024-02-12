@@ -1,0 +1,19 @@
+.flex-row-container-filter {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  text-align: center;
+}
+.flex-row-container-filter > .flex-row-item {
+  flex: 1 1 25%; /*grow | shrink | basis */
+  height: 100px;
+  margin-bottom: 5rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  border-color: #2fb4ff;
+  color: #2fb4ff;
+}
+.css-art2ul-ValueContainer2 {
+  color: #47a1d5 !important;
+}
