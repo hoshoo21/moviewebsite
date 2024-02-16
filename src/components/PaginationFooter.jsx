@@ -23,12 +23,12 @@ function PaginationFooter({
 
   const decrement = (evt) => {
     if (current_page > 0) {
-      previouspage(current_page - 1);
+      previouspage();
     }
   };
   const increment = (evt) => {
     if (current_page < total_pages) {
-      nextpage(current_page + 1);
+      nextpage();
     }
   };
   return (

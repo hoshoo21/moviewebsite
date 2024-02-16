@@ -7,10 +7,10 @@ import Contextpage from './ContextPage';
 import './MoviesGrid.css';
 import '../components/DropdownFilter.css';
 
-const moviesURL = 'https://api.themoviedb.org/3/movie/top_rated?';
+const moviesURL = 'https://api.themoviedb.org/3/movie/upcoming?';
 const apiKey = import.meta.env.VITE_API_KEY;
 let currentpage = 1;
-const Home = () => {
+const UpComing = () => {
   const {
     fetchGenre,
     genres,
@@ -34,6 +34,7 @@ const Home = () => {
 
     const res = await fetch(url, options);
     const data = await res.json();
+    data.results = data.results.sort((a, b) => b.popularity - a.popularity);
     console.log(data);
     setFullData(data);
   };
@@ -91,7 +92,7 @@ const Home = () => {
         Countries={countries}
         handleAvanceSearch={fetchFilteredMovies}
       />
-      <h2 className="title">Top Rated Movies</h2>
+      <h2 className="title">Popular</h2>
 
       <div className="movies-container">
         {!fulldata && (
@@ -103,9 +104,11 @@ const Home = () => {
           </div>
         )}
         {fulldata &&
-          fulldata.results.map((movie) => (
-            <MovieCard key={movie.id} movie={movie} />
-          ))}
+          fulldata.results
+            .sort((a, b) => {
+              return b.popularity - a.popularity;
+            })
+            .map((movie) => <MovieCard key={movie.id} movie={movie} />)}
       </div>
       {fulldata && (
         <PaginationFooter
@@ -121,4 +124,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default UpComing;

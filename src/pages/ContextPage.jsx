@@ -1,5 +1,4 @@
 import { createContext, useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 const Contextpage = createContext();
 
@@ -9,7 +8,6 @@ export function MovieProvider({ children }) {
   const [loader, setLoader] = useState(true);
   const [backgenre, setBackGenre] = useState(false);
   const [advanceMovies, setAdvanceMovies] = useState(null);
-  const navigate = useNavigate(); // =====> navigate page
 
   const APIKEY = import.meta.env.VITE_API_KEY;
 
