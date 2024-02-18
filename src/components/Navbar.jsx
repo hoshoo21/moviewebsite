@@ -57,7 +57,7 @@ const Navbar = () => {
         placement="fixed-top"
       >
         <CContainer fluid>
-          <CNavbarBrand href="#">Navbar</CNavbarBrand>
+          <CNavbarBrand href="#">Movie/Tv Portal</CNavbarBrand>
           <CNavbarToggler onClick={() => setVisible(!visible)} />
           <CCollapse className="navbar-collapse" visible={visible}>
             <CNavbarNav>
