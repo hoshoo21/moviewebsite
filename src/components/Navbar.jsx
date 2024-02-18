@@ -3,6 +3,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { BiCameraMovie, BiSearchAlt2 } from 'react-icons/bi';
 import UpComing from '../pages/UpComing';
 import Popular from '../pages/Popular';
+import AiringToday from '../pages/tv/AiringToday';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { FaRegWindowClose } from 'react-icons/fa';
 import {
@@ -72,6 +73,25 @@ const Navbar = () => {
                   </CDropdownItem>
                   <CDropdownItem href="/Upcoming" onClick={hanldeRoute}>
                     Upcoming
+                  </CDropdownItem>
+                </CDropdownMenu>
+              </CDropdown>
+            </CNavbarNav>
+            <CNavbarNav>
+              <CDropdown variant="nav-item" popper={false}>
+                <CDropdownToggle color="secondary">Tv Series</CDropdownToggle>
+                <CDropdownMenu>
+                  <CDropdownItem href="/AiringToday" onClick={hanldeRoute}>
+                    Airing Today
+                  </CDropdownItem>
+                  <CDropdownItem href="/OnTheAir" onClick={hanldeRoute}>
+                    On the Air
+                  </CDropdownItem>
+                  <CDropdownItem href="/PopularTv" onClick={hanldeRoute}>
+                    Popular
+                  </CDropdownItem>
+                  <CDropdownItem href="/TopRateTv" onClick={hanldeRoute}>
+                    Top Rated Tv Shows
                   </CDropdownItem>
                 </CDropdownMenu>
               </CDropdown>

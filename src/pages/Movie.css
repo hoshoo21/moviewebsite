@@ -17,15 +17,38 @@
   justify-content: center;
   text-align: center;
 }
-.flex-row-container > .flex-row-item {
+.flex-row-container-season {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: start;
+  text-align: left;
+}
+.flex-row-item-episodes {
   flex: 1 1 30%; /*grow | shrink | basis */
-  height: 100px;
-  margin-bottom: 5rem;
+  max-height: 100px;
+
   border-radius: 1rem;
   border-color: #2fb4ff;
+  cursor: pointer;
+  color: #4ac08f;
 }
 
-.flex-row-container > .flex-row-item > img {
+.flex-row-item-episodes > .flex-row-item {
+  flex: 1 1 30%; /*grow | shrink | basis */
+  height: 300px;
+  margin-bottom: 5rem;
+  border-radius: 1rem;
+
+  border-color: #2fb4ff;
+}
+.flex-row-item-contents {
+  max-height: 300px;
+  border-radius: 1rem;
+
+  border-color: #2fb4ff;
+}
+.contents .flex-row-container > .flex-row-item > img {
   flex: 1 1 30%; /*grow | shrink | basis */
   height: 75%;
 }
@@ -78,6 +101,7 @@
   text-align: center;
   font-size: 1.2rem;
   margin-bottom: 2rem;
+  color: #f7d354 !important;
 }
 
 .info {
@@ -96,6 +120,54 @@
   box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.2);
 }
 
+.info-seasons {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: left;
+
+  margin-bottom: 1.5rem;
+  padding: 2rem;
+  border-radius: 1.8rem;
+  margin-bottom: 2.5rem;
+  backdrop-filter: blur(15px);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.2);
+  background-color: black;
+}
+.info-seasons > h3 {
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4rem;
+
+  background-image: linear-gradient(
+    90.35deg,
+    #4ac08f 2.49%,
+    #2fb4ff 101.2%,
+    #2fb4ff 101.2%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 800;
+}
+.flew-row-item-seasons {
+  flex: 1 1 30%;
+  height: 100px;
+  margin-bottom: 5rem;
+  border-radius: 1rem;
+  border-color: #2fb4ff;
+  justify-content: flex-start;
+  align-items: start;
+  cursor: pointer;
+  color: #4ac08f;
+}
+.info-seasons:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
 .info:hover {
   background: rgba(255, 255, 255, 0.05);
 }

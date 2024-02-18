@@ -31,8 +31,6 @@ const Search = () => {
     setMovies(data);
   };
 
-  const handlenextpage = () => {};
-  const handleprevpage = () => {};
   const handleCurrentSearchPage = (pagenum) => {
     const searchWithQueryURL = `https://api.themoviedb.org/3/search/movie?query=${query}&page=${pagenum}`;
     getSearchedMovies(searchWithQueryURL);

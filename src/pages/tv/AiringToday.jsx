@@ -1,16 +1,16 @@
 import { useState, useEffect, useContext } from 'react';
 import { Spinner } from 'react-bootstrap';
-import MovieCard from '../components/MovieCard';
-import DropdownFilter from '../components/DropdownFilter';
-import PaginationFooter from '../components/PaginationFooter';
-import Contextpage from './ContextPage';
-import './MoviesGrid.css';
-import '../components/DropdownFilter.css';
+import MovieCard from '../../components/MovieCard';
+import DropdownFilter from '../../components/DropdownFilter';
+import PaginationFooter from '../../components/PaginationFooter';
+import Contextpage from '../ContextPage';
+import '../MoviesGrid.css';
+import '../../components/DropdownFilter.css';
 
-const moviesURL = 'https://api.themoviedb.org/3/movie/top_rated?';
+const moviesURL = 'https://api.themoviedb.org/3/tv/on_the_air';
 const apiKey = import.meta.env.VITE_API_KEY;
 let currentpage = 1;
-const Home = () => {
+const AiringToday = () => {
   const {
     fetchGenre,
     genres,
@@ -23,7 +23,7 @@ const Home = () => {
 
   const [filtermode, setFilterMode] = useState(false);
   const [query, setQuery] = useState('');
-  const getTopRatedMovies = async (url, direction) => {
+  const getAiringToday = async (url, direction) => {
     const options = {
       method: 'GET',
       headers: {
@@ -33,7 +33,8 @@ const Home = () => {
     };
 
     const res = await fetch(url, options);
-    const data = await res.json();
+    let data = await res.json();
+    data.results = data.results.sort((a, b) => b.vote_average - a.vote_average);
     console.log(data);
     setFullData(data);
   };
@@ -51,7 +52,7 @@ const Home = () => {
   const setCPage = (direction) => {
     if (filtermode === false) {
       const topRatedUrl = `${moviesURL}language=en-US&page=${currentpage}`;
-      getTopRatedMovies(topRatedUrl, direction);
+      getAiringToday(topRatedUrl, direction);
     } else {
       let baseQuery = query;
       baseQuery += `&page=${currentpage}`;
@@ -91,7 +92,7 @@ const Home = () => {
         Countries={countries}
         handleAvanceSearch={fetchFilteredMovies}
       />
-      <h2 className="title">Top Rated Movies</h2>
+      <h2 className="title">Airing Today</h2>
 
       <div className="movies-container">
         {!fulldata && (
@@ -104,7 +105,7 @@ const Home = () => {
         )}
         {fulldata &&
           fulldata.results.map((movie) => (
-            <MovieCard key={movie.id} movie={movie} media_type="movie" />
+            <MovieCard key={movie.id} movie={movie} media_type="tv" />
           ))}
       </div>
       {fulldata && (
@@ -121,4 +122,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default AiringToday;

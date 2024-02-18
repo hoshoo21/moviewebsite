@@ -14,6 +14,12 @@ import Popular from './pages/Popular';
 import UpComing from './pages/UpComing';
 import Home from './pages/Home';
 import MovieCard from './components/MovieCard';
+import AiringToday from './pages/tv/AiringToday';
+import TV from './pages/tv/Tv';
+import Tv from './pages/tv/Tv';
+import OnTheAir from './pages/tv/OnTheAir';
+import PopularTv from './pages/tv/PopularTv';
+import TopRateTv from './pages/tv/TopRateTv';
 
 function App() {
   return (
@@ -27,7 +33,13 @@ function App() {
               <Route path="Popular" element={<Popular />}></Route>
 
               <Route path="Upcoming" element={<UpComing />}></Route>
+              <Route path="AiringToday" element={<AiringToday />}></Route>
+              <Route path="OnTheAir" element={<OnTheAir />}></Route>
+              <Route path="PopularTv" element={<PopularTv />}></Route>
+              <Route path="TopRateTv" element={<TopRateTv />}></Route>
+
               <Route path="movie/:id" element={<MovieCard />} />
+              <Route path="Tv/:id" element={<Tv />} />
             </Routes>
           </main>
         </Router>

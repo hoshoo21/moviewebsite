@@ -5,13 +5,17 @@ import { NavLink, useNavigate } from 'react-router-dom';
 
 const imageUrl = import.meta.env.VITE_IMG;
 
-const MovieCard = ({ movie, showLink = true }) => {
+const MovieCard = ({ movie, showLink = true, media_type }) => {
   const navigate = useNavigate();
   const hanldeRoute = (evt) => {
     evt.preventDefault();
     console.log(evt);
     navigate(evt.target.pathname);
   };
+  let detail_url = `/movie/${movie.id}`;
+  if (media_type === 'tv') {
+    detail_url = `/tv/${movie.id}`;
+  }
   return (
     <div className="movie-card">
       <img src={imageUrl + movie.poster_path} alt={movie.title} />
@@ -20,7 +24,7 @@ const MovieCard = ({ movie, showLink = true }) => {
         <FaStar /> {Math.ceil(movie.vote_average).toFixed(2)}
       </p>
       {showLink && (
-        <a href={`/movie/${movie.id}`} onClick={hanldeRoute}>
+        <a href={detail_url} onClick={hanldeRoute}>
           Read More
         </a>
       )}
