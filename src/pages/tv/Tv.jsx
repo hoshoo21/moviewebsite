@@ -77,11 +77,11 @@ const Tv = () => {
   }
   let seasons = movie?.seasons.map((season, id) => {
     return (
-      <div>
+      <div style={{ margin: '10px' }}>
         <p className="flex-row-item-episodes"> {season.name}</p>
 
         <p className="flex-row-item-contents">
-          Episodes: {season.episode_count}
+          Episodes: <br /> {season.episode_count}
         </p>
         <p className="flex-row-item-contents">
           Air Date: <br /> {season.air_date}

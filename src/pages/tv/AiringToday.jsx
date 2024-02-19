@@ -7,7 +7,7 @@ import Contextpage from '../ContextPage';
 import '../MoviesGrid.css';
 import '../../components/DropdownFilter.css';
 
-const moviesURL = 'https://api.themoviedb.org/3/tv/on_the_air';
+const moviesURL = 'https://api.themoviedb.org/3/tv/on_the_air?';
 const apiKey = import.meta.env.VITE_API_KEY;
 let currentpage = 1;
 const AiringToday = () => {
@@ -34,7 +34,9 @@ const AiringToday = () => {
 
     const res = await fetch(url, options);
     let data = await res.json();
-    data.results = data.results.sort((a, b) => b.vote_average - a.vote_average);
+    data.results = data?.results.sort(
+      (a, b) => b.vote_average - a.vote_average
+    );
     console.log(data);
     setFullData(data);
   };
@@ -68,7 +70,7 @@ const AiringToday = () => {
     setCPage('next');
   };
   const fetchFilteredMovies = (country, genre, year) => {
-    let advQuery = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false`;
+    let advQuery = `https://api.themoviedb.org/3/discover/tv?include_adult=false&include_video=false`;
 
     if (year) advQuery += `&primary_release_year=${year.label}`;
     if (genre) advQuery += `&with_genres=${genre.value}`;

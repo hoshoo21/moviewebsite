@@ -20,6 +20,7 @@ import Tv from './pages/tv/Tv';
 import OnTheAir from './pages/tv/OnTheAir';
 import PopularTv from './pages/tv/PopularTv';
 import TopRateTv from './pages/tv/TopRateTv';
+import Movie from './pages/Movie';
 
 function App() {
   return (
@@ -38,7 +39,7 @@ function App() {
               <Route path="PopularTv" element={<PopularTv />}></Route>
               <Route path="TopRateTv" element={<TopRateTv />}></Route>
 
-              <Route path="movie/:id" element={<MovieCard />} />
+              <Route path="movie/:id" element={<Movie />} />
               <Route path="Tv/:id" element={<Tv />} />
             </Routes>
           </main>

@@ -12,16 +12,17 @@ const MovieCard = ({ movie, showLink = true, media_type }) => {
     console.log(evt);
     navigate(evt.target.pathname);
   };
-  let detail_url = `/movie/${movie.id}`;
+  let detail_url = `/movie/${movie?.id}`;
   if (media_type === 'tv') {
-    detail_url = `/tv/${movie.id}`;
+    detail_url = `/tv/${movie?.id}`;
   }
+  console.log(detail_url);
   return (
     <div className="movie-card">
-      <img src={imageUrl + movie.poster_path} alt={movie.title} />
-      <h2>{movie.title}</h2>
+      <img src={imageUrl + movie?.poster_path} alt={movie?.title} />
+      <h2>{movie?.title}</h2>
       <p>
-        <FaStar /> {Math.ceil(movie.vote_average).toFixed(2)}
+        <FaStar /> {Math.ceil(movie?.vote_average).toFixed(2)}
       </p>
       {showLink && (
         <a href={detail_url} onClick={hanldeRoute}>

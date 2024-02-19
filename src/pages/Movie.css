@@ -36,9 +36,10 @@
 
 .flex-row-item-episodes > .flex-row-item {
   flex: 1 1 30%; /*grow | shrink | basis */
-  height: 300px;
+  height: 100px;
   margin-bottom: 5rem;
   border-radius: 1rem;
+  border-color: #2fb4ff;
 
   border-color: #2fb4ff;
 }
@@ -48,7 +49,14 @@
 
   border-color: #2fb4ff;
 }
-.contents .flex-row-container > .flex-row-item > img {
+.flex-row-container > .flex-row-item {
+  flex: 1 1 30%; /*grow | shrink | basis */
+  height: 100px;
+  margin-bottom: 5rem;
+  border-radius: 1rem;
+  border-color: #2fb4ff;
+}
+.flex-row-container > .flex-row-item > img {
   flex: 1 1 30%; /*grow | shrink | basis */
   height: 75%;
 }

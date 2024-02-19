@@ -34,7 +34,9 @@ const OnTheAir = () => {
 
     const res = await fetch(url, options);
     let data = await res.json();
-    data.results = data.results.sort((a, b) => b.vote_average - a.vote_average);
+    data.results = data?.results.sort(
+      (a, b) => b.vote_average - a.vote_average
+    );
     console.log(data);
     setFullData(data);
   };
