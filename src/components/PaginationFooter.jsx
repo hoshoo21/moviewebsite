@@ -40,7 +40,10 @@ function PaginationFooter({
         </a>
       </div>
       <div className="flex-row-item">
-        <p style={{ color: 'teal' }}> {current_page} </p>
+        <p style={{ color: 'teal' }}>
+          {' '}
+          {current_page} / {total_pages}
+        </p>
       </div>
       <div className="flex-row-item">
         <a onClick={increment}>

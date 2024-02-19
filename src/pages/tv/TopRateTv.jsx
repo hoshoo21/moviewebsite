@@ -68,7 +68,7 @@ function TopRateTv() {
     setCPage('next');
   };
   const fetchFilteredMovies = (country, genre, year) => {
-    let advQuery = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false`;
+    let advQuery = `https://api.themoviedb.org/3/discover/tv?include_adult=false&include_video=false`;
 
     if (year) advQuery += `&primary_release_year=${year.label}`;
     if (genre) advQuery += `&with_genres=${genre.value}`;
